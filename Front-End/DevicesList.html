@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="js/display_monitor_1572022_item.js"></script>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#DevicesBody tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+$.getJSON('https://data.energystar.gov/resource/ewhi-bvce.json', function(data) {
+    /* console.log(data); */
+    $(data).each(function(i, devices) {
+      $('#DevicesBody').append($("<tr>")
+        .append($("<td>").append(devices.pd_id))
+        .append($("<td>").append(devices.brand_name))
+        .append($("<td>").append(devices.model_number ))
+        .append($("<td>").append(devices.video_playback_power_consumption_watts )));
+    });
+  })
+  .done(function() {
+    alert("Completed");
+  })
+  .fail(function(e) {
+    console.log('error:');
+    console.error(e);
+  })
+  .always(function() {
+    alert("always runs");
+  });
+
+</script>
+</head>
+<body>
+
+<p>Type to search the table:</p>  
+<input id="myInput" type="text" placeholder="Search..">
+<br><br>
+
+<table id="DevicesTable">
+	<thead>
+		<th>product ID</th>
+		<th>Brand Name</th>
+		<th>Model Number</th>
+    <th>Energy Usage per hour</th>
+	</thead>
+	<tbody id="DevicesBody"></tbody>
+</table>
+
+
+
+
+
+
+
+</body>
+</html>

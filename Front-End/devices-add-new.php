@@ -372,42 +372,63 @@
                             <header class="card-header">
                                 Add Manually:
                             </header>
+                <?php 
+
+                // when the user types something incorrect into the text boxes an error message will be dispaled 
+                // telling them what they did wrong
+
+                if (isset($_GET['error'])) {
+                  
+                  if ($_GET['error'] == "emptyfields") {
+                    echo '<p style="color:red; font-size:20px;">   Fill in all fields!</p> ';
+                  }
+                  else if ($_GET['error'] == "sqlerror") {
+                    echo '<p style="color:red; font-size:20px;">   SQL Error (Systems are Currently Down)</p> ';
+                  }
+                  else if ($_GET['error'] == "devicealreadythere") {
+                    echo '<p style="color:red; font-size:20px;">   Device Has Already Been Added</p> ';
+                  }
+                  else if ($_GET['error'] == "deviceadded") {
+                    echo '<p style="color:green; font-size:20px;">   Device Has Been Added</p> ';
+                  }
+                }
+               ?>
                             <div class="devices-add-form">
-                                <form action="/action_page.php">
+                                <form action="adddevicephp.php" method="post">
                                     <div class="form-group">
                                         <label for="device-nickname">Device Nickname:</label>
-                                        <input type="text" class="form-control" id="device-nickname">
+                                        <input type="text" class="form-control" id="devicenickname" name="devicenickname">
                                     </div>
                                     <div class="form-group">
                                         <label for="device-name">Device Name:</label>
-                                        <input type="text" class="form-control" id="device-name">
+                                        <input type="text" class="form-control" id="devicename" name="devicename">
                                     </div>
                                     <div class="form-group">
                                         <label for="manufacturer-name">Manufacturer Name:</label>
-                                        <input type="text" class="form-control" id="manufacturer-name">
+                                        <input type="text" class="form-control" id="manufacturername" name="manufacturername">
                                     </div>
                                     <div class="form-group">
                                         <label for="model">Model:</label>
-                                        <input type="text" class="form-control" id="model">
+                                        <input type="text" class="form-control" id="model" name="model">
                                     </div>
                                     <div class="form-group">
                                         <label for="energy-rating">Energy Rating:</label>
-                                        <input type="number" class="form-control" id="energy-rating">
+                                        <input type="number" class="form-control" id="energyrating" name="energyrating">
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Category:</label>
-                                        <select class="custom-select mb-3">
+                                        <select class="custom-select mb-3" id="Category" name="Category">
                                             <option selected>- Select Device Category -</option>
-                                            <option value="electronics">General Electronics</option>
-                                            <option value="electronics">General Appliances</option>
+                                            <option value="General Electronic">General Electronics</option>
+                                            <option value="General Appliances">General Appliances</option>
                                             <option value="kitchen">Kitchen</option>
-                                            <option value="tv">TV / Entertainment</option>
-                                            <option value="tv">Lighting</option>
+                                            <option value="TV / Entertainment">TV / Entertainment</option>
+                                            <option value="Lighting">Lighting</option>
                                             <option value="heating-appliances">Heating</option>
                                             <option value="cooling-appliances">Cooling</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" id="AddDevice" name="AddDevice">Submit</button>
                                 </form>
 
                             </div>

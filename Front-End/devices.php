@@ -372,86 +372,48 @@
                                   
                                   <table class="table text-center devices-table">
                                       <thead>
-                                      <tr>
-                                          <th>Device Name</th>
-                                          <th>Category</th>
-                                          <th>Last Switched On</th>
-                                          <th>State</th>
-                                          <th>Action</th>
-                                      </tr>
-                                      </thead>
-                                      <tbody id="DevicesTable">
-                                      <tr>
-                                          <td>Samsung UHD TV</td>
-                                          <td>TV / Entertainment</td>
-                                          <td>02/01/2020 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Toaster</td>
-                                          <td>Kitchen</td>
-                                          <td>Today - 19:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Cooker</td>
-                                          <td>Kitchen</td>
-                                          <td>Yesterday - 13:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Bedroom 1 Lights</td>
-                                          <td>Lighting</td>
-                                          <td>Today - 05:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                          <td>Living Room Lights</td>
-                                          <td>Lighting</td>
-                                          <td>19/12/2019 - 14:00</td>
-                                          <td><input type="checkbox" class="js-switch" checked /></td>
-                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                      </tr>
+                                        <?php
 
+                                          // php file to connect to db
+                                          require'db.php'; 
+
+                                          if (isset($_SESSION['HomeID'])) {
+
+                                            // sSQL statement 1
+                                            $sql = '
+                                            SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                                                    ';
+                                            
+                                            // query db
+                                            $result = mysqli_query($conn, $sql);
+
+                                            // if the query worked then set userid to a variable
+                                            if ($result) {
+
+                                                  while ($row = mysqli_fetch_assoc($result)) {
+                                                    $name = $row['Name'];
+                                                    $category = $row['Category'];
+                                                    $laston = $row['LastOn'];
+                                                    echo'
+                                                          <tr>
+                                                              <td>'.$name.'</td>
+                                                              <td>'.$category.'</td>
+                                                              <td>'.$laston.'</td>
+                                                              <td><input type="checkbox" class="js-switch" checked /></td>
+                                                              <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                                          </tr>
+
+                                                        ';
+                                                    }
+
+                                              // free the variable and connection for next statement
+                                              mysqli_free_result($result);
+                                              
+                                              
+                                                }
+                                            }
+
+                                        ?>
                                       </tbody>
                                   </table>
                               </div>

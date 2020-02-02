@@ -306,14 +306,14 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="index.php">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="devices.html">
+                    <a href="devices.php">
                         <i class="fa fa-desktop"></i>
                         <span>Devices</span>
                     </a>

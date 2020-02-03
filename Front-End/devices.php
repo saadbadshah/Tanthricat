@@ -49,7 +49,7 @@
                 <i class="fa fa-bars"></i>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><span>Tanthricat</span></a>
+            <a href="index.php" class="logo"><span>Tanthricat</span></a>
             <!--logo end-->
 
 
@@ -286,7 +286,7 @@
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="logout.php"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -394,17 +394,31 @@
                                                     $name = $row['Name'];
                                                     $category = $row['Category'];
                                                     $laston = $row['LastOn'];
-                                                    echo'
-                                                          <tr>
-                                                              <td>'.$name.'</td>
-                                                              <td>'.$category.'</td>
-                                                              <td>'.$laston.'</td>
-                                                              <td><input type="checkbox" class="js-switch" checked /></td>
-                                                              <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
-                                                          </tr>
+                                                              if ($row['State'] == 0) {
+                                                                    echo'<tr>
+                                                                            <td>'.$name.'</td>
+                                                                            <td>'.$category.'</td>
+                                                                            <td>'.$laston.'</td>
+                                                                            <td><input type="checkbox" class="js-switch" unchecked /></td>
+                                                                            <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                                                        </tr>
+                                                                         ';
+                                                                }
+                                                              else{
+                                                                    echo'<tr>
+                                                                            <td>'.$name.'</td>
+                                                                            <td>'.$category.'</td>
+                                                                            <td>'.$laston.'</td>
+                                                                            <td><input type="checkbox" class="js-switch" checked /></td>
+                                                                            <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                                                        </tr>
+                                                                        ';
 
-                                                        ';
-                                                    }
+                                                              }
+
+                                                              }
+                                                       
+                                                    
 
                                               // free the variable and connection for next statement
                                               mysqli_free_result($result);

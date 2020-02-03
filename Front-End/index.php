@@ -52,7 +52,7 @@
 	        </div>
 	        <!--logo start-->
 	        
-	        <a href="index.html" class="logo"><span>Tanthricat</span></a>
+	        <a href="index.php" class="logo"><span>Tanthricat</span></a>
 	        <!--logo end-->
 
 
@@ -469,47 +469,57 @@
 	                              </tr>
 	                              </thead>
 	                              <tbody>
-	                              <tr>
-	                                  <td>Samsung UHD TV</td>
-	                                  <td>02/01/2020 - 14:00</td>
-	                                  <!-- This is a switchery toggle switch -->
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Toaster</td>
-	                                  <td>Today - 19:00</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Cooker</td>
-	                                  <td>Yesterday - 13:00</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Bedroom 1 Lights</td>
-	                                  <td>Today - 05:00</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Living Room Lights</td>
-	                                  <td>19/12/2019 - 14:00</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Larry</td>
-	                                  <td>the Bird</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Larry</td>
-	                                  <td>the Bird</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
-	                              <tr>
-	                                  <td>Larry</td>
-	                                  <td>the Bird</td>
-	                                  <td><input type="checkbox" class="js-switch" checked /></td>
-	                              </tr>
+	                              <?php
+
+                                          // php file to connect to db
+                                          require'db.php'; 
+
+                                          if (isset($_SESSION['HomeID'])) {
+
+                                            // sSQL statement 1
+                                            $sql = '
+                                            SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                                                    ';
+                                            
+                                            // query db
+                                            $result = mysqli_query($conn, $sql);
+
+                                            // if the query worked then set userid to a variable
+                                            if ($result) {
+
+                                                  while ($row = mysqli_fetch_assoc($result)) {
+                                                    $name = $row['Name'];
+                                                    $laston = $row['LastOn'];
+                                                              if ($row['State'] == 0) {
+                                                                    echo'<tr>
+                                                                            <td>'.$name.'</td>
+                                                                            <td>'.$laston.'</td>
+                                                                            <td><input type="checkbox" class="js-switch" unchecked /></td>
+                                                                        </tr>
+                                                                         ';
+                                                                }
+                                                              else{
+                                                                    echo'<tr>
+                                                                            <td>'.$name.'</td>
+                                                                            <td>'.$laston.'</td>
+                                                                            <td><input type="checkbox" class="js-switch" checked /></td>
+                                                                        </tr>
+                                                                        ';
+
+                                                              }
+
+                                                              }
+                                                       
+                                                    
+
+                                              // free the variable and connection for next statement
+                                              mysqli_free_result($result);
+                                              
+                                              
+                                                }
+                                            }
+
+                                        ?>
 	                              </tbody>
 	                          </table>
 	                      </div>

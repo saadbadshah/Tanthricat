@@ -1,3 +1,8 @@
+<?php 
+  
+  session_start();
+
+?>  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +59,18 @@
                     echo '<p style="color:red; font-size:20px;">Your Passwords do not Match!</p> ';
                   }
 
-                  else if ($_GET['error'] == "houseidinuse") {
-                    echo '<p style="color:red; font-size:20px;">House ID is already in use</p> ';
+                  else if ($_GET['error'] == "InvalidID") {
+                    echo '<p style="color:red; font-size:20px;">House ID is Invaild</p> ';
                   }
 
                   else if ($_GET['error'] == "invalidHouseID") {
                     echo '<p style="color:red; font-size:20px;">House ID is not valid</p> ';
                   }
+
+                  else if ($_GET['error'] == "IDinUse") {
+                    echo '<p style="color:red; font-size:20px;">House ID is in use</p> ';
+                  }
+
 
                 }
                ?>
@@ -81,7 +91,7 @@
 
             <div class="registration">
                 Already Registered.
-                <a class="" href="login.html">
+                <a class="" href="login.php">
                     Login
                 </a>
             </div>

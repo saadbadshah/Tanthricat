@@ -8,7 +8,7 @@
     <meta name="author" content="Tanthricat Solutions">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Devices-Add New</title>
+    <title>Edit Device</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -20,9 +20,6 @@
     <link href="css/style-responsive.css" rel="stylesheet" />
 
     <!--External CSS -->
-
-        <!-- Switchery-->
-        <link rel="stylesheet" type="text/css" href="assets/switchery/switchery.css" />
 
         <!-- Font Awesome -->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -319,7 +316,7 @@
                         <i class="fa fa-gears"></i>
                         <span>Settings</span>
                     </a>
-                </li>    
+                </li>
             </ul>
               <!-- sidebar menu end-->
           </div>
@@ -330,50 +327,34 @@
         <!--main content start-->
         <section id="main-content">
           <section class="wrapper">
-            <div class="row">
+
+              <!--SECOND ROW-->
+                <div class="row">
                 <!-- Devices Table -->
                     <div class="col-lg-6">
-                        <section class="card">
+                          <section class="card">
                             <header class="card-header">
-                                Search Our Database:
+                                Edit Device:
                             </header>
                             <div class="devices-add-form">
+                            	<h5>Device Name:</h5>
+                            	<p>Samsung 55" UHD Smart TV</p>
 
-                                <form action="/action_page.php">
-                                    <div class="form-group">
-                                        <label for="device-name">Enter your device name:</label>
-                                        <input type="text" class="form-control" id="device-name">
-                                    </div>
-                                </form>
+                            	<h5>Model:</h5>
+                            	<p>SM55HHFLSD</p>
 
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-lg-6">
-                        <section class="card">
-                            <header class="card-header">
-                                Add Manually:
-                            </header>
-                            <div class="devices-add-form">
+                            	<h5>Manufacturer:</h5>
+                            	<p>Samsung</p>
+
+                            	<hr>
+
                                 <form action="/action_page.php">
                                     <div class="form-group">
                                         <label for="device-nickname">Device Nickname:</label>
                                         <input type="text" class="form-control" id="device-nickname">
                                     </div>
                                     <div class="form-group">
-                                        <label for="device-name">Device Name:</label>
-                                        <input type="text" class="form-control" id="device-name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="manufacturer-name">Manufacturer Name:</label>
-                                        <input type="text" class="form-control" id="manufacturer-name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="model">Model:</label>
-                                        <input type="text" class="form-control" id="model">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="energy-rating">Energy Rating:</label>
+                                        <label for="energy-rating">Energy Rating (KW/h):</label>
                                         <input type="number" class="form-control" id="energy-rating">
                                     </div>
                                     <div class="form-group">
@@ -389,12 +370,19 @@
                                             <option value="cooling-appliances">Cooling</option>
                                         </select>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="button" class="btn btn-danger">Delete Device</button>
                                 </form>
 
                             </div>
                         </section>
+                          <!--Devices Table start-->
                     </div>
+
+                
+                </div>
+ 
+          </section>
         </section>
         <!--main content end-->
 
@@ -424,8 +412,7 @@
 
     <!--common script for all pages-->
     <script src="js/common-scripts.js"></script>
-
-
+    
 
   </body>
 </html>

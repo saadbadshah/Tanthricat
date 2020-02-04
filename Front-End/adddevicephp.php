@@ -19,7 +19,7 @@
       $Category = $_POST['Category'];
 
       // if all the text boxes are empty send the user back to the page with an error message
-      if(empty($HomeID) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || empty($Category)) {
+      if(empty($HomeID) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -') {
 
       header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-add-new.php?error=emptyfields");
       exit();

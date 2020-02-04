@@ -18,7 +18,7 @@ if (isset($_POST['Update'])){
 
 
        // if all the text boxes are empty send the user back to the page with an error message
-      if(empty($Nickname) || empty($Name) || empty($ManufacturerName) || empty($Model) || empty($EnergyRating) || empty($Category)) {
+      if(empty($Nickname) || empty($Name) || empty($ManufacturerName) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -') {
 
       header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-edit.php?error=emptyfields");
       exit();
@@ -79,7 +79,7 @@ if (isset($_POST['Update'])){
             
       }
 
-}	
+} 
 
 elseif (isset($_POST['Delete'])){
 
@@ -130,7 +130,7 @@ else{
       header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-edit.php");
       exit();
 }
-	
-	
+  
+  
 
 ?>

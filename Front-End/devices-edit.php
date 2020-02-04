@@ -468,11 +468,11 @@
                                         <label for="email">Category:</label>
                                         <select class="custom-select mb-3" id="Category" name="Category">
                                             <option selected>- Select Device Category -</option>
-                                            <option value="electronics">General Electronics</option>
-                                            <option value="electronics">General Appliances</option>
+                                            <option value="General Electronic">General Electronics</option>
+                                            <option value="General Appliances">General Appliances</option>
                                             <option value="kitchen">Kitchen</option>
-                                            <option value="tv">TV / Entertainment</option>
-                                            <option value="tv">Lighting</option>
+                                            <option value="TV / Entertainment">TV / Entertainment</option>
+                                            <option value="Lighting">Lighting</option>
                                             <option value="heating-appliances">Heating</option>
                                             <option value="cooling-appliances">Cooling</option>
                                         </select>

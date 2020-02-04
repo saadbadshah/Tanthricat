@@ -38,6 +38,25 @@
         <!-- Font Awesome -->
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
+        <script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="jquery.autocomplete.js"></script>
+
+        
+ <script type="text/javascript" src="/js/jquery.js"></script>
+ <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+ <script type="text/javascript" class="include" type="text/javascript" src="/js/jquery.dcjqaccordion.2.7.js"></script>
+ <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
+ <script type="text/javascript" src="/js/jquery.nicescroll.js" type="text/javascript"></script>
+ <script type="text/javascript" src="/js/jquery.customSelect.min.js" ></script>
+ <script type="text/javascript" src="/js/respond.min.js" ></script>
+ <script type="text/javascript" src="/js/common-scripts.js"></script>
+
+ <script> 
+ jQuery(function(){ 
+ $("#search").autocomplete("search.php");
+ });
+ </script>
+
 </head>
 
 
@@ -360,7 +379,7 @@
                                 <form action="/action_page.php">
                                     <div class="form-group">
                                         <label for="device-name">Enter your device name:</label>
-                                        <input type="text" class="form-control" id="device-name">
+                                        <input type="text" class="form-control" id="search" name="q">
                                     </div>
                                 </form>
 
@@ -453,16 +472,6 @@
 
     <!-- LOADING JS FILES -->
 
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script class="include" type="text/javascript" src="js/jquery.dcjqaccordion.2.7.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <script src="js/jquery.customSelect.min.js" ></script>
-    <script src="js/respond.min.js" ></script>
-
-    <!--common script for all pages-->
-    <script src="js/common-scripts.js"></script>
 
 
 

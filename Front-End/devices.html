@@ -8,7 +8,7 @@
     <meta name="author" content="Tanthricat Solutions">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Edit Device</title>
+    <title>Devices</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,7 @@
 
     <!--External CSS -->
 
-    	<!-- Switchery-->
+        <!-- Switchery-->
         <link rel="stylesheet" type="text/css" href="assets/switchery/switchery.css" />
 
         <!-- Font Awesome -->
@@ -334,57 +334,112 @@
               <!--SECOND ROW-->
                 <div class="row">
                 <!-- Devices Table -->
-                    <div class="col-lg-6">
-                          <section class="card">
-                            <header class="card-header">
-                                Edit Device:
-                            </header>
-                            <div class="devices-add-form">
-
-                            	<h5>Device State:</h5>
-                            	<input type="checkbox" class="js-switch" checked />
-
-                            	<hr>
-
-                            	<h5>Device Name:</h5>
-                            	<p>Samsung 55" UHD Smart TV</p>
-
-                            	<h5>Model:</h5>
-                            	<p>SM55HHFLSD</p>
-
-                            	<h5>Manufacturer:</h5>
-                            	<p>Samsung</p>
-
-                            	<hr>
-
-                                <form action="/action_page.php">
-                                    <div class="form-group">
-                                        <label for="device-nickname">Device Nickname:</label>
-                                        <input type="text" class="form-control" id="device-nickname">
+                    <div class="col-lg-12">
+                          <section class="card devices-card">
+                                <header class="card-header">
+                                    <div class="row">
+                                    <div class="col-lg-4">
+                                        <input class="form-control" id="SearchInput" type="text" placeholder="Search...">
+                                        <br>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="energy-rating">Energy Rating (KW/h):</label>
-                                        <input type="number" class="form-control" id="energy-rating">
+                                    <div class="col-lg-8">
+                                        <button onclick="window.location.href = 'devices-add-new.html';" type="button" class="btn btn-round btn-info" >Add New Device</button>
+                                        <button type="button" class="btn btn-round btn-info">Select</button>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="email">Category:</label>
-                                        <select class="custom-select mb-3">
-                                            <option selected>- Select Device Category -</option>
-                                            <option value="electronics">General Electronics</option>
-                                            <option value="electronics">General Appliances</option>
-                                            <option value="kitchen">Kitchen</option>
-                                            <option value="tv">TV / Entertainment</option>
-                                            <option value="tv">Lighting</option>
-                                            <option value="heating-appliances">Heating</option>
-                                            <option value="cooling-appliances">Cooling</option>
-                                        </select>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Update</button>
-                                    <button type="button" class="btn btn-danger">Delete Device</button>
-                                </form>
+                                </div>
+                                    
+                                </header>
+                            <!--Devices Table start-->
+                              <div class="devices-list-scrollable">
+                                <!-- On the table tag below I added a 'devices-table' class to align all the text of the td's -->
+                                
+                                  
+                                  <table class="table text-center devices-table">
+                                      <thead>
+                                      <tr>
+                                          <th>Device Name</th>
+                                          <th>Category</th>
+                                          <th>Last Switched On</th>
+                                          <th>State</th>
+                                          <th>Action</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody id="DevicesTable">
+                                      <tr>
+                                          <td>Samsung UHD TV</td>
+                                          <td>TV / Entertainment</td>
+                                          <td>02/01/2020 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Toaster</td>
+                                          <td>Kitchen</td>
+                                          <td>Today - 19:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Cooker</td>
+                                          <td>Kitchen</td>
+                                          <td>Yesterday - 13:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Bedroom 1 Lights</td>
+                                          <td>Lighting</td>
+                                          <td>Today - 05:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
+                                      <tr>
+                                          <td>Living Room Lights</td>
+                                          <td>Lighting</td>
+                                          <td>19/12/2019 - 14:00</td>
+                                          <td>ON</td>
+                                          <td><button type="button" class="btn btn-round btn-info">Edit</button></td>
+                                      </tr>
 
-                            </div>
-                        </section>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </section>
                           <!--Devices Table start-->
                     </div>
 
@@ -425,6 +480,7 @@
     <!-- Additonal JS files -->
     <script src="assets/switchery/switchery.js"></script>
 
+    <!-- EXTRA JS CODE FOR THIS PAGE -->
     <script>
 
         //Switchery
@@ -450,7 +506,6 @@
         });
 
     </script>
-    
 
   </body>
 </html>

@@ -63,7 +63,7 @@
 
                     else {
                     // changes the '?' in the prepared statment to the username and password and makes sure that the values are suitable to that of a string or "s"
-                    mysqli_stmt_bind_param($stmt, "iisssis", $HomeID, $Model, $Nickname, $Name, $Manufacturer, $EnergyRating, $Category);
+                    mysqli_stmt_bind_param($stmt, "issssis", $HomeID, $Model, $Nickname, $Name, $Manufacturer, $EnergyRating, $Category);
                     // the statment is the executed runing the quering and saving the information to the db, the user is then sent to the Login page with a success message
                     mysqli_stmt_execute($stmt);
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-add-new.php?error=deviceadded");

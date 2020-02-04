@@ -494,7 +494,7 @@
                                                                     echo'<tr>
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$laston.'</td>
-                                                                            <td><input type="checkbox" class="js-switch" unchecked /></td>
+                                                                            <td>OFF</td>
                                                                         </tr>
                                                                          ';
                                                                 }
@@ -502,7 +502,7 @@
                                                                     echo'<tr>
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$laston.'</td>
-                                                                            <td><input type="checkbox" class="js-switch" checked /></td>
+                                                                            <td>ON</td>
                                                                         </tr>
                                                                         ';
 

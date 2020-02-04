@@ -8,6 +8,7 @@
         
     }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +18,7 @@
     <meta name="author" content="Tanthricat Solutions">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Devices</title>
+    <title>Edit Device</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -350,116 +351,153 @@
               <!--SECOND ROW-->
                 <div class="row">
                 <!-- Devices Table -->
-                    <div class="col-lg-12">
-                          <section class="card devices-card">
-                                <header class="card-header">
-                                    <div class="row">
-                                    <div class="col-lg-4">
-                                        <input class="form-control" id="SearchInput" type="text" placeholder="Search...">
-                                        <br>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <button onclick="window.location.href = 'devices-add-new.php';" type="button" class="btn btn-round btn-info" >Add New Device</button>
-                                        <button type="button" class="btn btn-round btn-info">Select</button>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                     <?php 
+                    <div class="col-lg-6">
+                          <section class="card">
+                            <header class="card-header">
+                                Edit Device:
+                            </header>
+                            <?php 
 
                                 // when the user types something incorrect into the text boxes an error message will be dispaled 
                                 // telling them what they did wrong
 
                                 if (isset($_GET['error'])) {
                                   
-                                  if ($_GET['error'] == "deviceedited") {
-                                    echo '<p style="color:green; font-size:20px;">Device Has Been Edited</p> ';
+                                  if ($_GET['error'] == "emptyfields") {
+                                    echo '<p style="color:red; font-size:20px;">   Fill in all fields!</p> ';
                                   }
-                                  else if ($_GET['error'] == "devicedeleted") {
-                                    echo '<p style="color:green; font-size:20px;">Device Has Been Deleted</p> ';
+                                  else if ($_GET['error'] == "sqlerror") {
+                                    echo '<p style="color:red; font-size:20px;">   SQL Error (Systems are Currently Down)</p> ';
                                   }
                                 }
-                               ?>    
+                               ?>
+                            <?php
+
+                            require'db.php'; 
+
+                            
+                            // if all the relevant information for the form has been entered and passed into the URL then proceed
+                            if ( isset($_GET['Model']) and isset($_GET['Nickname']) and isset($_GET['Name']) and isset($_GET['ManufacturerName'] ) and isset($_GET['EnergyRating'] ) and isset($_GET['Category'] ) and isset($_GET['State'] )) {
+
+                                if($_GET['State'] == 0){
+                                    echo '
+                                 <div class="devices-add-form">
+
+                                <hr>
+
+                                <h5>Device Name:</h5>
+                                <p>'.$_GET['Name'].'</p>
+
+                                <h5>Model:</h5>
+                                <p>'.$_GET['Model'].'</p>
+
+                                <h5>Manufacturer:</h5>
+                                <p>'.$_GET['ManufacturerName'].'</p>
+
+                                <hr>
+
+                                <form action="updatedevice.php" method="post" id="updatedevice">
+                                    <div class="form-group">
+                                        <label for="Sate">State:</label>
+                                        <input type="checkbox" class="js-switch id="Statedb" name="Statedb"" unchecked />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="device-nickname">Device Nickname:</label>
+                                        <input type="text" class="form-control" value="'.$_GET['Nickname'].'" id="Nickname" name="Nickname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="energy-rating">Energy Rating (KW/h):</label>
+                                        <input type="number" class="form-control" value="'.$_GET['EnergyRating'].'" id="EnergyRating" name="EnergyRating">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Category:</label>
+                                        <select class="custom-select mb-3" id="Category" name="Category">
+                                            <option selected>- Select Device Category -</option>
+                                            <option value="electronics">General Electronics</option>
+                                            <option value="electronics">General Appliances</option>
+                                            <option value="kitchen">Kitchen</option>
+                                            <option value="tv">TV / Entertainment</option>
+                                            <option value="tv">Lighting</option>
+                                            <option value="heating-appliances">Heating</option>
+                                            <option value="cooling-appliances">Cooling</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="Update" name="Update">Update</button>
+                                    <button type="submit" class="btn btn-danger" id="Delete" name="Delete">Delete Device</button>
+                                    <input type="hidden" value="'.$_GET['Name'].'" id="Name" name="Name">
+                                    <input type="hidden" value="'.$_GET['Model'].'" id="Model" name="Model">
+                                    <input type="hidden" value="'.$_GET['ManufacturerName'].'" id="ManufacturerName" name="ManufacturerName">
+                                </form>
+
                                 </div>
-                                    
-                                </header>
-                            <!--Devices Table start-->
-                              <div class="devices-list-scrollable">
-                                <!-- On the table tag below I added a 'devices-table' class to align all the text of the td's -->
-                                
+                                ';  
+
+                                }
+
+                                else {
+                                    echo '
+                                 <div class="devices-add-form">
+
+                                <hr>
+
+                                <h5>Device Name:</h5>
+                                <p>'.$_GET['Name'].'</p>
+
+                                <h5>Model:</h5>
+                                <p>'.$_GET['Model'].'</p>
+
+                                <h5>Manufacturer:</h5>
+                                <p>'.$_GET['ManufacturerName'].'</p>
+
+                                <hr>
+
+                                <form action="updatedevice.php" method="post" id="updatedevice">
+                                    <div class="form-group">
+                                        <label for="Sate">State:</label>
+                                        <input type="checkbox" class="js-switch id="Statedb" name="Statedb"" checked />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="device-nickname">Device Nickname:</label>
+                                        <input type="text" class="form-control" value="'.$_GET['Nickname'].'" id="Nickname" name="Nickname">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="energy-rating">Energy Rating (KW/h):</label>
+                                        <input type="number" class="form-control" value="'.$_GET['EnergyRating'].'" id="EnergyRating" name="EnergyRating">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Category:</label>
+                                        <select class="custom-select mb-3" id="Category" name="Category">
+                                            <option selected>- Select Device Category -</option>
+                                            <option value="electronics">General Electronics</option>
+                                            <option value="electronics">General Appliances</option>
+                                            <option value="kitchen">Kitchen</option>
+                                            <option value="tv">TV / Entertainment</option>
+                                            <option value="tv">Lighting</option>
+                                            <option value="heating-appliances">Heating</option>
+                                            <option value="cooling-appliances">Cooling</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="Update" name="Update">Update</button>
+                                    <button type="submit" class="btn btn-danger" id="Delete" name="Delete">Delete Device</button>
+                                    <input type="hidden" value="'.$_GET['Name'].'" id="Name" name="Name">
+                                    <input type="hidden" value="'.$_GET['Model'].'" id="Model" name="Model">
+                                    <input type="hidden" value="'.$_GET['ManufacturerName'].'" id="ManufacturerName" name="ManufacturerName">
+                                </form>
+
+                                </div>
+                                ';  
+
+                                }
                                   
-                                  <table class="table text-center devices-table">
-                                      <thead>
+                            }
 
-                                        <?php
+                            else{
+                              header("Location: http://www2.macs.hw.ac.uk/~jw97/CitiRentals/rent-car.php?error=EnterAllValues");
+                              exit();
+                            }
 
-                                          // php file to connect to db
-                                          require'db.php'; 
-
-                                          if (isset($_SESSION['HomeID'])) {
-
-                                            // sSQL statement 1
-                                            $sql = '
-                                            SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
-                                                    ';
-                                            
-                                            // query db
-                                            $result = mysqli_query($conn, $sql);
-
-                                            // if the query worked then set userid to a variable
-                                            if ($result) {
-
-                                                  while ($row = mysqli_fetch_assoc($result)) {
-                                                    $name = $row['Name'];
-                                                    $category = $row['Category'];
-                                                    $laston = $row['LastOn'];
-                                                              if ($row['State'] == 0) {
-                                                                    echo'<tr>
-                                                                            <td>'.$name.'</td>
-                                                                            <td>'.$category.'</td>
-                                                                            <td>'.$laston.'</td>
-                                                                            <td>OFF</td>
-                                                                            <td>
-                                                                                <form action="editdevice.php" method="post" id="editdevice">
-                                                                                    <button type="submit" class="btn btn-round btn-info" id="Edit" name="Edit">Edit</button>
-                                                                                    <input type="hidden" value="'.$name.'" name="name" id="name">
-                                                                                </form>
-                                                                            </td>
-                                                                        </tr>
-                                                                         ';
-                                                                }
-                                                              else{
-                                                                    echo'<tr>
-                                                                            <td>'.$name.'</td>
-                                                                            <td>'.$category.'</td>
-                                                                            <td>'.$laston.'</td>
-                                                                            <td>ON</td>
-                                                                            <td>
-                                                                                <form action="editdevice.php" method="post" id="editdevice">
-                                                                                    <button type="submit" class="btn btn-round btn-info" id="Edit" name="Edit">Edit</button>
-                                                                                    <input type="hidden" value="'.$name.'" name="name" id="name">
-                                                                                </form>
-                                                                            </td>
-                                                                        </tr>
-                                                                        ';
-
-                                                              }
-
-                                                              }
-                                                       
-                                                    
-
-                                              // free the variable and connection for next statement
-                                              mysqli_free_result($result);
-                                              
-                                              
-                                                }
-                                            }
-
-                                        ?>
-                                      </tbody>
-                                  </table>
-                              </div>
-                          </section>
+                            ?>
+                        </section>
                           <!--Devices Table start-->
                     </div>
 
@@ -500,7 +538,6 @@
     <!-- Additonal JS files -->
     <script src="assets/switchery/switchery.js"></script>
 
-    <!-- EXTRA JS CODE FOR THIS PAGE -->
     <script>
 
         //Switchery
@@ -526,6 +563,7 @@
         });
 
     </script>
+    
 
   </body>
 </html>

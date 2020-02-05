@@ -1,4 +1,4 @@
-<?php 
+ <?php 
   
   session_start();
 
@@ -8,7 +8,7 @@
         
     }
 
-?>  
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Home Automation Web Application">
-    <meta name="author" content="Tanthricat Solutions">
+    <meta name="author" content="Tanthricat Solutions" >
     <link rel="shortcut icon" href="img/favicon.png">
 
     <title>Devices-Add New</title>
@@ -51,19 +51,21 @@
  <script type="text/javascript" src="/js/respond.min.js" ></script>
  <script type="text/javascript" src="/js/common-scripts.js"></script>
 
+
+
  <script> 
  jQuery(function(){ 
  $("#search").autocomplete("search.php");
  });
  </script>
 
+
 </head>
 
 
 
 <body class="light-sidebar-nav">
-
-    <section id="container">
+ <section id="container">
         <!--header start-->
         <header class="header white-bg">
             <div class="sidebar-toggle-box">
@@ -363,7 +365,6 @@
         </aside>
         <!--sidebar end-->
 
-
         <!--main content start-->
         <section id="main-content">
           <section class="wrapper">
@@ -376,10 +377,11 @@
                             </header>
                             <div class="devices-add-form">
 
-                                <form action="/action_page.php">
+                                <form action="devices-add-new.php">
                                     <div class="form-group">
                                         <label for="device-name">Enter your device name:</label>
                                         <input type="text" class="form-control" id="search" name="q">
+                                        <button>search</button>
                                     </div>
                                 </form>
 
@@ -412,28 +414,54 @@
                   }
                 }
                ?>
+
+
+    
+
+
+
+<?php
+
+
+// Variable Names
+include 'db.php';
+$search=$_GET['q'];
+
+$data = "SELECT DeviceName,EnergyPH,Model,ManufaName from Dummy WHERE DeviceName like '%".$search."%'LIMIT 1";
+$result = $conn->query($data);
+
+ while($row = $result->fetch_assoc()) {
+  
+  ?>
+
                             <div class="devices-add-form">
                                 <form action="adddevicephp.php" method="post">
                                     <div class="form-group">
                                         <label for="device-nickname">Device Nickname:</label>
                                         <input type="text" class="form-control" id="devicenickname" name="devicenickname">
                                     </div>
+
                                     <div class="form-group">
                                         <label for="device-name">Device Name:</label>
-                                        <input type="text" class="form-control" id="devicename" name="devicename">
+                                        <input type="text" class="form-control" id="devicename" name="devicename" value="<?php echo $row['DeviceName']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="manufacturer-name">Manufacturer Name:</label>
-                                        <input type="text" class="form-control" id="manufacturername" name="manufacturername">
+                                        <input type="text" class="form-control" id="manufacturername" name="manufacturername" value="<?php echo $row['ManufaName']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="model">Model:</label>
-                                        <input type="text" class="form-control" id="model" name="model">
+                                        <input type="text" class="form-control" id="model" name="model" value="<?php echo $row['Model']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="energy-rating">Energy Rating:</label>
-                                        <input type="number" class="form-control" id="energyrating" name="energyrating">
+                                        <input type="number" class="form-control" id="energyrating" name="energyrating" value="<?php echo $row['EnergyPH']?>">
                                     </div>
+ <?php
+}
+?>
+ 
+
                                     <div class="form-group">
                                         <label for="email">Category:</label>
                                         <select class="custom-select mb-3" id="Category" name="Category">
@@ -451,8 +479,9 @@
                                 </form>
 
                             </div>
-                        </section>
+                       </section>
                     </div>
+
         </section>
         <!--main content end-->
 

@@ -320,7 +320,7 @@
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="house-map.php">
                         <i class="fa fa-home"></i>
                         <span>House Map</span>
                     </a>

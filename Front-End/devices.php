@@ -317,7 +317,7 @@
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="house-map.php">
                         <i class="fa fa-home"></i>
                         <span>House Map</span>
                     </a>
@@ -388,7 +388,16 @@
                                 
                                   
                                   <table class="table text-center devices-table">
-                                      <thead>
+                                       <thead>
+                                      <tr>
+                                          <th>Device Name</th>
+                                          <th>Category</th>
+                                          <th>Last Switched On</th>
+                                          <th>State</th>
+                                          <th>Action</th>
+                                      </tr>
+                                      </thead>
+                                      <tbody id="DevicesTable">
 
                                         <?php
 

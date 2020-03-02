@@ -15,7 +15,7 @@ if (isset($_POST['Update'])){
       $Model = $_POST['Model'];
       $ManufacturerName = $_POST['ManufacturerName'];
       $State = $_POST['Statedb'];
-
+      $Room = $_POST['Room'];
 
        // if all the text boxes are empty send the user back to the page with an error message
       if(empty($Nickname) || empty($Name) || empty($ManufacturerName) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -') {
@@ -28,7 +28,7 @@ if (isset($_POST['Update'])){
 
             if($State == ''){
 
-                  $sql = ' UPDATE DevicesTanthricat SET Nickname=?, EnergyRating=?, Category=?, State=0 WHERE KeyID="'.$_SESSION['HomeID'].'" AND Name="'.$Name.'" AND Model="'.$Model.'"; ';
+                  $sql = ' UPDATE DevicesTanthricat SET Nickname=?, EnergyRating=?, Category=?, State=0, Room=? WHERE KeyID="'.$_SESSION['HomeID'].'" AND Name="'.$Name.'" AND Model="'.$Model.'"; ';
                   $stmt = mysqli_stmt_init($conn);
 
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -37,7 +37,7 @@ if (isset($_POST['Update'])){
                   }
 
                   else{
-                    mysqli_stmt_bind_param($stmt, "sis", $Nickname, $EnergyRating, $Category);
+                    mysqli_stmt_bind_param($stmt, "siss", $Nickname, $EnergyRating, $Category, $Room);
                     mysqli_stmt_execute($stmt);
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices.php?error=deviceedited");
                     exit();
@@ -52,7 +52,7 @@ if (isset($_POST['Update'])){
 
             elseif ($State == 'on') {
 
-                  $sql = ' UPDATE DevicesTanthricat SET Nickname=?, EnergyRating=?, Category=?, State=1   WHERE KeyID="'.$_SESSION['HomeID'].'" AND Name="'.$Name.'" AND Model="'.$Model.'"; ';
+                  $sql = ' UPDATE DevicesTanthricat SET Nickname=?, EnergyRating=?, Category=?, State=1, Room=?   WHERE KeyID="'.$_SESSION['HomeID'].'" AND Name="'.$Name.'" AND Model="'.$Model.'"; ';
                   $stmt = mysqli_stmt_init($conn);
 
                   if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -61,7 +61,7 @@ if (isset($_POST['Update'])){
                   }
 
                   else{
-                    mysqli_stmt_bind_param($stmt, "sis", $Nickname, $EnergyRating, $Category);
+                    mysqli_stmt_bind_param($stmt, "siss", $Nickname, $EnergyRating, $Category, $Room);
                     mysqli_stmt_execute($stmt);
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices.php?error=deviceedited");
                     exit();

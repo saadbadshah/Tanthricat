@@ -393,6 +393,7 @@
                                           <th>Device Name</th>
                                           <th>Category</th>
                                           <th>Last Switched On</th>
+                                          <th>Room</th>
                                           <th>State</th>
                                           <th>Action</th>
                                       </tr>
@@ -426,6 +427,7 @@
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$category.'</td>
                                                                             <td>'.$laston.'</td>
+                                                                            <td>'.$row['Room'].'</td>
                                                                             <td>OFF</td>
                                                                             <td>
                                                                                 <form action="editdevice.php" method="post" id="editdevice">
@@ -441,6 +443,7 @@
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$category.'</td>
                                                                             <td>'.$laston.'</td>
+                                                                            <td>'.$row['Room'].'</td>
                                                                             <td>ON</td>
                                                                             <td>
                                                                                 <form action="editdevice.php" method="post" id="editdevice">

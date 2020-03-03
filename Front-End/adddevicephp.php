@@ -17,9 +17,9 @@
       $Model = $_POST['model'];
       $EnergyRating = $_POST['energyrating'];
       $Category = $_POST['Category'];
-
+      $Room = $_POST['Room'];
       // if all the text boxes are empty send the user back to the page with an error message
-      if(empty($HomeID) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -') {
+      if(empty($HomeID) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -' || $Room == '- Select Room -') {
 
       header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-add-new.php?error=emptyfields");
       exit();
@@ -53,7 +53,7 @@
                 }
                 else{
 
-                    $sql = "INSERT INTO DevicesTanthricat (KeyID, Model, Nickname, Name, ManufacturerName, EnergyRating, Category) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    $sql = "INSERT INTO DevicesTanthricat (KeyID, Model, Nickname, Name, ManufacturerName, EnergyRating, Category, Room) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                     $stmt = mysqli_stmt_init($conn);
                     // if the user has tried to perform an SQL injection they will be sent back to the page with an error message or if the connection  has failed they will be sent back wirth an error message
                     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -63,7 +63,7 @@
 
                     else {
                     // changes the '?' in the prepared statment to the username and password and makes sure that the values are suitable to that of a string or "s"
-                    mysqli_stmt_bind_param($stmt, "issssis", $HomeID, $Model, $Nickname, $Name, $Manufacturer, $EnergyRating, $Category);
+                    mysqli_stmt_bind_param($stmt, "issssiss", $HomeID, $Model, $Nickname, $Name, $Manufacturer, $EnergyRating, $Category, $Room);
                     // the statment is the executed runing the quering and saving the information to the db, the user is then sent to the Login page with a success message
                     mysqli_stmt_execute($stmt);
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-add-new.php?error=deviceadded");

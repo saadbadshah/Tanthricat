@@ -411,12 +411,54 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="device-Room">Room:</label>
-                                        <input type="text" class="form-control" value="'.$_GET['Room'].'" id="Room" name="Room">
+                                        <select class="custom-select mb-3" id="Room" name="Room">
+                                            <option selected>'.$_GET['Room'].'</option>
+                                    ';
+                                    
+
+                                      if (isset($_SESSION['HomeID'])) {
+
+                                        $sql = '
+                                        SELECT * FROM RoomsTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                                                ';
+                                        
+                                        // query db
+                                        $result = mysqli_query($conn, $sql);
+
+                                        // if the query worked then set userid to a variable
+                                        if ($result) {
+
+                                              while ($row = mysqli_fetch_assoc($result)) {
+                                                $room = $row['Room'];
+                                                          echo'
+                                                                 <option value="'.$room.'">'.$room.'</option>
+
+
+                                                          ';
+
+                                                          }
+                                                   
+                                                
+
+                                          // free the variable and connection for next statement
+                                          mysqli_free_result($result);
+                                          
+                                          
+                                            }
+                                        }
+
+
+
+                                    echo'
+                                      </select>
                                     </div>
+
+                                    
+
                                     <div class="form-group">
                                         <label for="email">Category:</label>
                                         <select class="custom-select mb-3" id="Category" name="Category">
-                                            <option selected>- Select Device Category -</option>
+                                            <option selected>'.$_GET['Category'].'</option>
                                             <option value="General Electronic">General Electronics</option>
                                             <option value="General Appliances">General Appliances</option>
                                             <option value="kitchen">Kitchen</option>
@@ -470,12 +512,49 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="device-Room">Room:</label>
-                                        <input type="text" class="form-control" value="'.$_GET['Room'].'" id="Room" name="Room">
+                                        <select class="custom-select mb-3" id="Room" name="Room">
+                                            <option selected>'.$_GET['Room'].'</option>
+                                    ';
+
+                                    if (isset($_SESSION['HomeID'])) {
+
+                                        $sql = '
+                                        SELECT * FROM RoomsTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                                                ';
+                                        
+                                        // query db
+                                        $result = mysqli_query($conn, $sql);
+
+                                        // if the query worked then set userid to a variable
+                                        if ($result) {
+
+                                              while ($row = mysqli_fetch_assoc($result)) {
+                                                $room = $row['Room'];
+                                                          echo'
+                                                                 <option value="'.$room.'">'.$room.'</option>
+
+
+                                                          ';
+
+                                                          }
+                                                   
+                                                
+
+                                          // free the variable and connection for next statement
+                                          mysqli_free_result($result);
+                                          
+                                          
+                                            }
+                                        }
+                                    
+
+                                    echo'
+                                    </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Category:</label>
                                         <select class="custom-select mb-3" id="Category" name="Category">
-                                            <option selected>- Select Device Category -</option>
+                                            <option selected>'.$_GET['Category'].'</option>
                                             <option value="General Electronic">General Electronics</option>
                                             <option value="General Appliances">General Appliances</option>
                                             <option value="kitchen">Kitchen</option>

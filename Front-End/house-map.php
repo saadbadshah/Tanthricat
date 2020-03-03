@@ -343,6 +343,29 @@
 
 
         <!--main content start-->
+
+        <?php 
+
+                // when the user types something incorrect into the text boxes an error message will be dispaled 
+                // telling them what they did wrong
+
+                if (isset($_GET['error'])) {
+                  
+                  if ($_GET['error'] == "emptyfields") {
+                    echo '<p style="color:red; font-size:20px;">   Fill in all fields!</p> ';
+                  }
+                  else if ($_GET['error'] == "sqlerror") {
+                    echo '<p style="color:red; font-size:20px;">   SQL Error (Systems are Currently Down)</p> ';
+                  }
+                  else if ($_GET['error'] == "devicealreadythere") {
+                    echo '<p style="color:red; font-size:20px;">   Device Has Already Been Added</p> ';
+                  }
+                  else if ($_GET['error'] == "Roomadded") {
+                    echo '<p style="color:green; font-size:20px;">   Device Has Been Added</p> ';
+                  }
+                }
+        ?>
+
         <section id="main-content">
           <section class="wrapper">
 
@@ -386,7 +409,10 @@
     <!-- Additonal JS files -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
     <script src='https://code.jquery.com/ui/1.11.4/jquery-ui.min.js'></script>
-    <script>
+    <?php
+    echo'<script>';
+
+    echo"
         $(function () {
 
           //function randomString() generates ID number for cards and columns
@@ -399,47 +425,58 @@
             return str;
           }
 
+          ";
+
+    echo"
           // Column class
           function Column(name) {
             var self = this;
             this.id = randomString();
             this.name = name;
-            this.$element = createColumn();
+            this.element = createColumn();
 
             function createColumn() {
               // components of column
-              var $column = $('<div>').addClass('column');
-              var $columnTitle = $('<h4>').addClass('column-title').text(self.name);
-              var $columnDelete = $('<button>').addClass('delete btn btn-danger');
-              var $columnCardList = $('<ul>').addClass('column-card-list');
-              // var $columnAddCard = $('<button>').addClass('btn add-card').text('Add a card');
+              var column = $('<div>').addClass('column');
+              var columnTitle = $('<h4>').addClass('column-title').text(self.name);
+              var columnDelete = $('<button>').addClass('delete btn btn-danger');
+              var columnCardList = $('<ul>').addClass('column-card-list');
+              // var columnAddCard = $('<button>').addClass('btn add-card').text('Add a card');
+
+              ";
+
+        echo"
 
               //events for column
-              $columnDelete.click(function () {
+              columnDelete.click(function () {
                 self.removeColumn();
               });
-              // $columnAddCard.click(function () {
+              // columnAddCard.click(function () {
               //   self.addCard(new Card(prompt('Enter the name of the card')));
               // });
 
               // construction of column components
-              $column.append($columnTitle)
-                .append($columnCardList)
-                .append($columnDelete);
+              column.append(columnTitle)
+                .append(columnCardList)
+                .append(columnDelete);
 
-                // .append($columnAddCard)
+                // .append(columnAddCard)
 
               // return of created column
-              return $column;
+              return column;
             }
           }
 
+        ";
+
+        echo"
+
           Column.prototype = {
             addCard: function (card) {
-              this.$element.children('ul').append(card.$element);
+              this.element.children('ul').append(card.element);
             },
             removeColumn: function () {
-              this.$element.remove();
+              this.element.remove();
             }
           };
 
@@ -449,46 +486,53 @@
             this.id = randomString();
             this.description = description;
             this.state = state;
-            this.$element = createCard();
+            this.element = createCard();
 
             console.log(self.description);
+
+            ";
+
+        echo"
 
             function createCard() {
 
               // creating cards
-              var $card = $('<li>').addClass('card').addClass(self.state);
-              var $cardDescription = $('<div>').addClass('card-description').text(self.description);
+              var card = $('<li>').addClass('card').addClass(self.state);
+              var cardDescription = $('<div>').addClass('card-description').text(self.description);
 
               // event for card - removing it
-              // $cardDelete.click(function () {
+              // cardDelete.click(function () {
               //   self.removeCard();
               // });
 
               //combaining the blocks
-              $card.append($cardDescription);
+              card.append(cardDescription);
 
               // combining the blocks (new version)
-              // $card.append($cardDescription);
+              // card.append(cardDescription);
 
               // returning the card
-              return $card;
+              return card;
 
             }
           }
 
+          ";
+
+        echo"
           Card.prototype = {
             removeCard: function () {
-              this.$element.remove();
+              this.element.remove();
             }
           };
 
           var board = {
             name: 'Kanban Board',
             addColumn: function (column) {
-              this.$element.append(column.$element);
+              this.element.append(column.element);
               initSortable();
             },
-            $element: $('#board .column-container')
+            element: $('#board .column-container')
           };
 
           function initSortable() {
@@ -498,45 +542,148 @@
             }).disableSelection();
           }
 
+        ";
 
+        echo"
           $('.create-column')
             .click(function () {
               var name = prompt('Enter the room name:');
+              ";
+              echo'
               if (name !== ""){
+                ';
+
+                echo"
                 var column = new Column(name);
                 board.addColumn(column);
+                ";
+            
+                echo'
+                window.location.href="housemapphp.php?name="+name;
+                
+        
+
               }
               else{
                 alert("Sorry, your room name cannot be empty");
               }
             });
 
-          // CREATING COLUMNS
-          var kitchenColumn = new Column('Kitchen');
-          var bedroomColumn = new Column('Bedroom');
-          var bedroom2Column = new Column('Bedroom 2');
+            ';
 
-          // ADDING COLUMNS TO THE BOARD
-          board.addColumn(kitchenColumn);
-          board.addColumn(bedroomColumn);
-          board.addColumn(bedroom2Column);
+            
+              require'db.php'; 
 
-          // CREATING CARDS
-          var card1 = new Card('Samsung TV','red-state');
-          var card2 = new Card('Fridge', 'red-state');
-          var card3 = new Card('Lights', 'green-state');
+              if (isset($_SESSION['HomeID'])) {
 
-          // ADDING CARDS TO COLUMNS
+                $sql = '
+                SELECT * FROM RoomsTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                        ';
+                
+                // query db
+                $result = mysqli_query($conn, $sql);
+
+                // if the query worked then set userid to a variable
+                if ($result) {
+
+                      while ($row = mysqli_fetch_assoc($result)) {
+                        $room = $row['Room'];
+                                  echo"
+                                         var ".$room." = new Column('".$room."');
+                                         board.addColumn(".$room.");
 
 
-          bedroomColumn.addCard(card1);
-          kitchenColumn.addCard(card2);
-          kitchenColumn.addCard(card3);
+                                  ";
+
+                                  }
+                           
+                        
+
+                  // free the variable and connection for next statement
+                  mysqli_free_result($result);
+                  
+                  
+                    }
+
+
+                }
+
+    ?>
+
+    <?php
+
+
+            require'db.php'; 
+
+              if (isset($_SESSION['HomeID'])) {
+
+                $sql2 = '
+                    SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'";
+                        ';
+                
+                // query db
+                $result2 = mysqli_query($conn, $sql2);
+
+                // if the query worked then set userid to a variable
+                if ($result2) {
+
+                      while ($row = mysqli_fetch_assoc($result2)) {
+                        $room = $row['Room'];
+                        $state= $row['State'];
+                        $Name= $row['Name'];
+                        $Nickname= $row['Nickname'];
+
+                         if ($row['State'] == 0) {
+
+                            echo"
+                                        var card1 = new Card('".$Name."','green-state');
+                                        ".$room.".addCard(card1);
+
+
+                                  ";
+
+                         }else {
+
+                            echo"
+                                        var card1 = new Card('".$Name."','red-state');
+                                        ".$room.".addCard(card1);
+
+
+                                  ";
+
+                         }
+                                  
+
+                                  }
+                           
+                        
+
+                  // free the variable and connection for next statement
+                  mysqli_free_result($result2);
+                  
+                  
+                    }
+                }
+
+                
+               
+
+              
+                
+
+
+            echo"
 
 
         });
 
-    </script>
+       
+    ";
+    
+
+    echo'</script>';
+
+    ?>
 
 
     

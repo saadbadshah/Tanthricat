@@ -19,7 +19,7 @@
       $Category = $_POST['Category'];
       $Room = $_POST['Room'];
       // if all the text boxes are empty send the user back to the page with an error message
-      if(empty($HomeID) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -' || $Room == '- Select Room -') {
+      if(empty($HomeID) || empty($Nickname) || empty($Name) || empty($Manufacturer) || empty($Model) || empty($EnergyRating) || $Category == '- Select Device Category -' || $Room == '- Select Room -') {
 
       header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices-add-new.php?error=emptyfields");
       exit();
@@ -27,7 +27,7 @@
       else {
 
             // select query using a prepared statment to prevent SQL injections, The query is to see if the username is already taken
-            $sql = "SELECT Model FROM DevicesTanthricat WHERE Model=?";
+            $sql = "SELECT Nickname FROM DevicesTanthricat WHERE Nickname=?";
             // connection from db file
             $stmt = mysqli_stmt_init($conn);
 
@@ -38,7 +38,7 @@
             }
             else{
                 // changes the '?' in the prepared statment to the username and makes sure that the values are suitable to that of a string or "s"
-                mysqli_stmt_bind_param($stmt, "i", $Model);
+                mysqli_stmt_bind_param($stmt, "s", $Nickname);
                 // executes the statement
                 mysqli_stmt_execute($stmt);
 

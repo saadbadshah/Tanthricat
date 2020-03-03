@@ -7,9 +7,9 @@ if (isset($_POST['Edit'])){
       // File to connect to the db
       require 'db.php';
 
-      $name = $_POST['name'];
+      $nickname = $_POST['Nickname'];
 
-       $sql = 'SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'" AND Name="'.$name.'"; ';
+       $sql = 'SELECT * FROM DevicesTanthricat WHERE KeyID="'.$_SESSION['HomeID'].'" AND Nickname="'.$nickname.'"; ';
             
             // query db
             $result = mysqli_query($conn, $sql);

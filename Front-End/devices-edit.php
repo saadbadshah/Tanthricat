@@ -402,7 +402,7 @@
                                         <input type="checkbox" class="js-switch id="Statedb" name="Statedb"" unchecked />
                                     </div>
                                     <div class="form-group">
-                                        <label for="device-nickname">Device Nickname:</label>
+                                        <label for="device-nickname">Device Nickname(Must Be Unique ):</label>
                                         <input type="text" class="form-control" value="'.$_GET['Nickname'].'" id="Nickname" name="Nickname">
                                     </div>
                                     <div class="form-group">
@@ -503,7 +503,7 @@
                                         <input type="checkbox" class="js-switch id="Statedb" name="Statedb"" checked />
                                     </div>
                                     <div class="form-group">
-                                        <label for="device-nickname">Device Nickname:</label>
+                                        <label for="device-nickname">Device Nickname(Must Be Unique ):</label>
                                         <input type="text" class="form-control" value="'.$_GET['Nickname'].'" id="Nickname" name="Nickname">
                                     </div>
                                     <div class="form-group">

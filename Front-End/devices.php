@@ -390,6 +390,7 @@
                                   <table class="table text-center devices-table">
                                        <thead>
                                       <tr>
+                                          <th>Nickname</th>
                                           <th>Device Name</th>
                                           <th>Category</th>
                                           <th>Last Switched On</th>
@@ -420,10 +421,12 @@
 
                                                   while ($row = mysqli_fetch_assoc($result)) {
                                                     $name = $row['Name'];
+                                                    $Nickname = $row['Nickname'];
                                                     $category = $row['Category'];
                                                     $laston = $row['LastOn'];
                                                               if ($row['State'] == 0) {
                                                                     echo'<tr>
+                                                                            <td>'.$row['Nickname'].'</td>
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$category.'</td>
                                                                             <td>'.$laston.'</td>
@@ -432,7 +435,7 @@
                                                                             <td>
                                                                                 <form action="editdevice.php" method="post" id="editdevice">
                                                                                     <button type="submit" class="btn btn-round btn-info" id="Edit" name="Edit">Edit</button>
-                                                                                    <input type="hidden" value="'.$name.'" name="name" id="name">
+                                                                                    <input type="hidden" value="'.$Nickname.'" name="Nickname" id="Nickname">
                                                                                 </form>
                                                                             </td>
                                                                         </tr>
@@ -440,6 +443,7 @@
                                                                 }
                                                               else{
                                                                     echo'<tr>
+                                                                            <td>'.$row['Nickname'].'</td>
                                                                             <td>'.$name.'</td>
                                                                             <td>'.$category.'</td>
                                                                             <td>'.$laston.'</td>
@@ -448,7 +452,7 @@
                                                                             <td>
                                                                                 <form action="editdevice.php" method="post" id="editdevice">
                                                                                     <button type="submit" class="btn btn-round btn-info" id="Edit" name="Edit">Edit</button>
-                                                                                    <input type="hidden" value="'.$name.'" name="name" id="name">
+                                                                                    <input type="hidden" value="'.$Nickname.'" name="Nickname" id="Nickname">
                                                                                 </form>
                                                                             </td>
                                                                         </tr>

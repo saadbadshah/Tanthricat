@@ -437,7 +437,7 @@ $result = $conn->query($data);
                             <div class="devices-add-form">
                                 <form action="adddevicephp.php" method="post">
                                     <div class="form-group">
-                                        <label for="device-nickname">Device Nickname:</label>
+                                        <label for="device-nickname">Device Nickname(Must Be Unique):</label>
                                         <input type="text" class="form-control" id="devicenickname" name="devicenickname">
                                     </div>
 

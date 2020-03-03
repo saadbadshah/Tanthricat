@@ -103,7 +103,7 @@ elseif (isset($_POST['Delete'])){
 
       else {
 
-            $sql = ' DELETE FROM DevicesTanthricat WHERE KeyID=? AND Model=? AND Name=?; ';
+            $sql = ' DELETE FROM DevicesTanthricat WHERE KeyID=? AND Model=? AND Nickname=?; ';
             $stmt = mysqli_stmt_init($conn);
 
             if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -112,7 +112,7 @@ elseif (isset($_POST['Delete'])){
             }
 
             else{
-              mysqli_stmt_bind_param($stmt, "iss", $_SESSION['HomeID'], $Model, $Name);
+              mysqli_stmt_bind_param($stmt, "iss", $_SESSION['HomeID'], $Model, $Nickname);
               mysqli_stmt_execute($stmt);
               header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices.php?error=devicedeleted");
               exit();

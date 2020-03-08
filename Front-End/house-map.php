@@ -363,6 +363,9 @@
                   else if ($_GET['error'] == "Roomadded") {
                     echo '<p style="color:green; font-size:20px;">   Device Has Been Added</p> ';
                   }
+                  else if ($_GET['error'] == "Roomdeleted") {
+                    echo '<p style="color:red; font-size:20px;">   Device Has Been Added</p> ';
+                  }
                 }
         ?>
 
@@ -449,7 +452,11 @@
 
               //events for column
               columnDelete.click(function () {
-                self.removeColumn();
+                self.removeColumn();";
+                echo' window.location.href="housemapphp.php?delete="+name;';
+
+
+        echo"
               });
               // columnAddCard.click(function () {
               //   self.addCard(new Card(prompt('Enter the name of the card')));
@@ -547,7 +554,7 @@
         echo"
           $('.create-column')
             .click(function () {
-              var name = prompt('Enter the room name:');
+              var name = prompt('Enter the room name (No Spaces):');
               ";
               echo'
               if (name !== ""){
@@ -632,6 +639,7 @@
                         $state= $row['State'];
                         $Name= $row['Name'];
                         $Nickname= $row['Nickname'];
+                        if($room!=''){
 
                          if ($row['State'] == 0) {
 
@@ -652,9 +660,12 @@
                                   ";
 
                          }
+
+                     }
                                   
 
                                   }
+
                            
                         
 

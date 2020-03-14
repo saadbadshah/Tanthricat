@@ -423,7 +423,7 @@
                                                     $name = $row['Name'];
                                                     $Nickname = $row['Nickname'];
                                                     $category = $row['Category'];
-                                                    $laston = $row['LastOn'];
+                                                    $laston = ''.$row['LastOnDate'].' at '.$row['LastOnTime'].'';
                                                               if ($row['State'] == 0) {
                                                                     echo'<tr>
                                                                             <td>'.$row['Nickname'].'</td>

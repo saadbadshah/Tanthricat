@@ -489,7 +489,7 @@
 
                                                   while ($row = mysqli_fetch_assoc($result)) {
                                                     $name = $row['Name'];
-                                                    $laston = $row['LastOn'];
+                                                    $laston = ''.$row['LastOnDate'].' at '.$row['LastOnTime'].'';
                                                               if ($row['State'] == 0) {
                                                                     echo'<tr>
                                                                             <td>'.$name.'</td>

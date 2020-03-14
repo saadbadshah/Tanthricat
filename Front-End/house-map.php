@@ -644,7 +644,7 @@
                          if ($row['State'] == 0) {
 
                             echo"
-                                        var card1 = new Card('".$Nickname."','green-state');
+                                        var card1 = new Card('".$Nickname."','red-state');
                                         ".$room.".addCard(card1);
 
 
@@ -653,7 +653,7 @@
                          }else {
 
                             echo"
-                                        var card1 = new Card('".$Nickname."','red-state');
+                                        var card1 = new Card('".$Nickname."','green-state');
                                         ".$room.".addCard(card1);
 
 

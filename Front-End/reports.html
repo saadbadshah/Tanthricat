@@ -31,6 +31,8 @@
 		
 		<!-- JQuery Multi Select -->
 		<link rel="stylesheet" type="text/css" href="assets/jquery-multi-select/css/multi-select.css" />
+
+		
 		
 
 </head>
@@ -372,10 +374,14 @@
                               	Device Filters
                           	</header>
                           	<div class="card-body">
+                          		<div class="col-lg-12" style="background-color: #F1F1F1; border-radius:5px; color:black; padding:20px; margin-bottom:15px">
+                          			<p>💡 Select the <strong>Devices</strong> that you would like to view the energy consumption for on the graph above.</p>
+                          			<button type="button" class="btn btn-info" style="margin-bottom: 5px" onclick="enableFiltByDevice()">Click to Filter By Device</button>
+                          		</div>
                           		<form action="#" class="form-horizontal tasi-form">
 	                              	<div class="form-group row last">
 	                                    <div class="col-md-9">
-		                                    <select name="country" class="multi-select" multiple="" id="my_multi_select3" >
+		                                    <select name="country" class="multi-select" multiple="" id="my_multi_select3" disabled="disabled">
 		                                   		<option value="AF">Samsung TV</option>
 		                                      	<option value="AL">Kitchen Lights</option>
                                      			<option value="DZ">Living Room Lights</option>
@@ -396,14 +402,18 @@
                               	Device Category Filters
                           	</header>
                           	<div class="card-body">
+                          		<div class="col-lg-12" style="background-color: #F1F1F1; border-radius:5px; color:black; padding:20px; margin-bottom:15px">
+                          			<p>💡 Select the <strong>Device Categories</strong> that you would like to view the energy consumption for on the graph above.</p>
+                          			<button type="button" class="btn btn-info" style="margin-bottom: 5px" onclick="enableFiltByCategory()">Click to Filter By Category</button>
+                          		</div>
                               	<form action="#" class="form-horizontal tasi-form">
 	                              	<div class="form-group row">
 	                                  	<div class="col-md-9">
-	                                      	<select multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]">
+	                                      	<select multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]" disabled='disabled'>
 	                                          	<option>Kitchen</option>
 	                                          	<option>General Applicances</option>
 	                                          	<option>Entertainment</option>
-	                                          	<option selected>Lights</option>
+	                                          	<option>Lights</option>
 	                                      	</select>
 	                                  	</div>
 	                              	</div>
@@ -413,6 +423,9 @@
                   	</div>
 
               	</div>
+
+
+         
           </section>
         </section>
         <!--main content end-->
@@ -432,6 +445,9 @@
 
 
     <!-- LOADING JS FILES -->
+
+    
+   
 
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
@@ -465,7 +481,25 @@
 
     <!-- EXTRA JS CODE FOR THIS PAGE -->
 
-    
+    <script>
+    	function enableFiltByDevice(){
+			// document.getElementById("my_multi_select3").setAttribute("disabled", "disabled");
+			$('#my_multi_select3').removeAttr('disabled');
+			$('#my_multi_select3').multiSelect('refresh');
+			$('#my_multi_select1').attr('disabled', 'disabled');
+			$('#my_multi_select1').multiSelect('refresh');
+    	}
+
+    	function enableFiltByCategory(){
+			// document.getElementById("my_multi_select3").setAttribute("disabled", "disabled");
+			$('#my_multi_select1').removeAttr('disabled');
+			$('#my_multi_select1').multiSelect('refresh');
+
+			$('#my_multi_select3').attr('disabled', 'disabled');
+			$('#my_multi_select3').multiSelect('refresh');
+    	}
+
+    </script>
 
   </body>
 </html>

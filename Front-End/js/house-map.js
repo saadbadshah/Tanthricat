@@ -123,19 +123,24 @@ $(function () {
     });
 
   // CREATING COLUMNS
+
+
   var kitchenColumn = new Column('Kitchen');
   var bedroomColumn = new Column('Bedroom');
   var bedroom2Column = new Column('Bedroom 2');
+  var bedroom3Column = new Column('Bedroom 3');
 
   // ADDING COLUMNS TO THE BOARD
   board.addColumn(kitchenColumn);
   board.addColumn(bedroomColumn);
   board.addColumn(bedroom2Column);
+  board.addColumn(bedroom3Column);
 
   // CREATING CARDS
   var card1 = new Card('Samsung TV','red-state');
   var card2 = new Card('Fridge', 'red-state');
   var card3 = new Card('Lights', 'green-state');
+  var card4 = new Card('TV 2', 'green-state');
 
   // ADDING CARDS TO COLUMNS
 
@@ -143,6 +148,6 @@ $(function () {
   bedroomColumn.addCard(card1);
   kitchenColumn.addCard(card2);
   kitchenColumn.addCard(card3);
-
+  kitchenColumn.addCard(card4);
 
 });

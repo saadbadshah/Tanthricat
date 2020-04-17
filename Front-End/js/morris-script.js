@@ -12,6 +12,49 @@ $(document).ready(function() {
   });
 });
 
+
+
+var devices = new Array();
+
+function retrieveValues() {
+  // call ajax
+  var ajax = new XMLHttpRequest();
+
+  // sending ajax request to php file containing array
+  ajax.open("GET", "calculate-values.php", true);
+  ajax.send();
+
+  // receiving response from calculate-values.php
+  ajax.onreadystatechange = function ()
+  {
+      if (this.readyState == 4 && this.status == 200)
+      {
+          // converting JSON back to array
+          devices = JSON.parse(this.responseText);
+          // console.log(values);
+      }
+
+  }
+
+  calculateEnergy();
+}
+
+function calculateEnergy() {
+  // Calculating energy usage for each device
+  for (var i=0; i<devices.length; i++) {
+    var date = new Date();
+    var time = Math.abs(date - devices[i][2]);
+    var totHours = time/3600000;
+    var energy = Math.round(totHours * devices[i][1]);
+    
+    devices[i] = {nickname:devices[i][0], value:energy};
+  }
+}
+
+// Use devices[index].nickname for device name
+// and devices[index].value for how much energy it has used
+
+
 function barChart() {
   window.barChart = Morris.Bar({
     element: 'bar-chart',

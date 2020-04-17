@@ -21,7 +21,7 @@ function retrieveValues() {
   var ajax = new XMLHttpRequest();
 
   // sending ajax request to php file containing array
-  ajax.open("GET", "calculate-values.php", true);
+  ajax.open("GET", "../calculate-values.php", true);
   ajax.send();
 
   // receiving response from calculate-values.php

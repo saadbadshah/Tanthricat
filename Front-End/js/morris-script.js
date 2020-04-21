@@ -1,13 +1,14 @@
 $(document).ready(function() {
   //barChart();
-  //lineChart();
-  areaChart();
+  lineChart();
+  //areaChart();
   //donutChart();
+  retrieveValues();
 
   $(window).resize(function() {
     //window.barChart.redraw();
-    //window.lineChart.redraw();
-    window.areaChart.redraw();
+    window.lineChart.redraw();
+    //window.areaChart.redraw();
     //window.donutChart.redraw();
   });
 });
@@ -38,18 +39,22 @@ function retrieveValues() {
 
   calculateEnergy();
 }
-
 function calculateEnergy() {
   // Calculating energy usage for each device
   for (var i=0; i<devices.length; i++) {
+
     var date = new Date();
     var time = Math.abs(date - devices[i][2]);
     var totHours = time/3600000;
     var energy = Math.round(totHours * devices[i][1]);
     
     devices[i] = {nickname:devices[i][0], value:energy};
+ 	//console.log(devices[i]);
   }
+
 }
+//console.log(devices[0]);
+ //console.log(devices[0].value);
 
 // Use devices[index].nickname for device name
 // and devices[index].value for how much energy it has used

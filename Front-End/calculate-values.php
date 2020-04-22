@@ -2,7 +2,7 @@
 require 'db.php';
 
 // Retrieve the nickname, energy rating, and last on date of all currently active devices (State is 1/ON).
-$sql = "SELECT Nickname, EnergyRating, LastOnDate FROM test WHERE State = 1";
+$sql = "SELECT Nickname, EnergyRating, LastOnDate FROM DevicesTanthricat WHERE State = 1";
 
 $result = mysqli_query($conn, $sql);
 $data = array();

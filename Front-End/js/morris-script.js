@@ -21,25 +21,25 @@ $(document).ready(function() {
 
 
 function retrieveValues() {
-    // Create an AJAX get request to fetch the array (in string form)
-    var ajax = new XMLHttpRequest();
-    var method = "GET";
-    var url = "Front-End/calculate-values.php";
-    var asynchronous = true;
+  // Create an AJAX get request to fetch the array (in string form)
+  var ajax = new XMLHttpRequest();
+  var method = "GET";
+  var url = "Front-End/calculate-values.php";
+  var asynchronous = true;
 
-    // Form the request and send it
-    ajax.open(method, url, asynchronous);
-    ajax.send();
+  // Form the request and send it
+  ajax.open(method, url, asynchronous);
+  ajax.send();
 
-    // Receive the response and then convert the string back to an array, before passing it on
-    ajax.onreadystatechange = function()
-    {
-        if (this.readyState == 4 && this.status == 200)
-        {
-            var data = JSON.parse(this.responseText);
-            calculateEnergy(data)
-        }
-    }
+  // Receive the response and then convert the string back to an array, before passing it on
+  ajax.onreadystatechange = function()
+  {
+      if (this.readyState == 4 && this.status == 200)
+      {
+        var data = JSON.parse(this.responseText);
+        calculateEnergy(data)
+      }
+  }
 }
 
 // For each device in the array, calculate its energy usage by taking the difference
@@ -49,20 +49,25 @@ function retrieveValues() {
 // Assign the device's nickname and its energy value as a new entry to the array of
 // devices.
 function calculateEnergy(data) {
-    var today = new Date();
-    for (var i=0; i<data.length; i++) {
-        var name = data[i].Nickname;
 
-        var d = new Date(JSON.stringify(data[i].LastOnDate));
-        var time = Math.abs(today - d);
-        var totHours = time/(3600*1000);
+  var today = new Date();
+  for (var i=0; i<data.length; i++) {
+    var name = data[i].Nickname;
 
-        var rating = Number(data[i].EnergyRating);
-        var energy = Math.round(totHours * rating);
+    var d = new Date(JSON.stringify(data[i].LastOnDate));
+    var time = Math.abs(today - d);
+    var totHours = time/(3600*1000);
+
+    var rating = Number(data[i].EnergyRating);
+    var energy = Math.round(totHours * rating);
         
-        devices[i] = {nickname:name, value:energy};
-    }
-    console.log(devices);
+    devices[i] = {nickname:name, value:energy};
+
+    /*      TESTING HERE       */
+    // console.log(data[i]);
+    // console.log(devices[i]);
+  }
+  // console.log(devices);
 }
 
 /* SEE THE FOLLOWING SUGGESTION WHEN MAPPING VALUES TO CHART

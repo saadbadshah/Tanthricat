@@ -137,7 +137,6 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <button onclick="window.location.href = 'devices-add-new.php';" type="button" class="btn btn-round btn-info" >Add New Device</button>
-                                        <button type="button" class="btn btn-round btn-info">Select</button>
                                     </div>
                                 </div>
                                 <div class="row">

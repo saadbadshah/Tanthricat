@@ -323,7 +323,7 @@
                 </li>
 
                 <li>
-                    <a href="index.php">
+                    <a href="reports.php">
                         <i class="fa fa-bar-chart-o"></i>
                         <span>Reports</span>
                     </a>

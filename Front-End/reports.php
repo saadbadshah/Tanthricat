@@ -51,7 +51,7 @@
                 <i class="fa fa-bars"></i>
             </div>
             <!--logo start-->
-            <a href="index.html" class="logo"><span>Tanthricat</span></a>
+            <a href="index.php" class="logo"><span>Tanthricat</span></a>
             <!--logo end-->
 
 
@@ -281,7 +281,7 @@
                             <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i> Settings</a></li>
                             <li><a href="#"><i class="fa fa-bell-o"></i> Notification</a></li>
-                            <li><a href="login.html"><i class="fa fa-key"></i> Log Out</a></li>
+                            <li><a href="logout.php"><i class="fa fa-key"></i> Log Out</a></li>
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -298,35 +298,35 @@
             <!-- sidebar menu start-->
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
                 <li>
-                    <a class="active" href="devices.html">
+                    <a class="active" href="devices.php">
                         <i class="fa fa-desktop"></i>
                         <span>Devices</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="house-map.php">
                         <i class="fa fa-home"></i>
                         <span>House Map</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="reports.php">
                         <i class="fa fa-bar-chart-o"></i>
                         <span>Reports</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="index.php">
                         <i class="fa fa-gears"></i>
                         <span>Settings</span>
                     </a>

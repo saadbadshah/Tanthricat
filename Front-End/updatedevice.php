@@ -53,7 +53,7 @@ if (isset($_POST['Update'])){
                       CURLOPT_POST => 1,
                       CURLOPT_POSTFIELDS => [
                           name => $Nickname,
-                          state  => $State
+                          state  => 'off'
                       ]
                   ]);
                   // Send the request & save response to $resp
@@ -96,7 +96,7 @@ if (isset($_POST['Update'])){
                       CURLOPT_POST => 1,
                       CURLOPT_POSTFIELDS => [
                           name => $Nickname,
-                          state  => $State
+                          state  => 'on'
                       ]
                   ]);
                   // Send the request & save response to $resp

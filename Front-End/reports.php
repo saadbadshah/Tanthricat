@@ -107,7 +107,7 @@
                 </li>
 
                 <li>
-                    <a class="active" href="devices.php">
+                    <a  href="devices.php">
                         <i class="fa fa-desktop"></i>
                         <span>Devices</span>
                     </a>
@@ -121,7 +121,7 @@
                 </li>
 
                 <li>
-                    <a href="reports.php">
+                    <a class="active" href="reports.php">
                         <i class="fa fa-bar-chart-o"></i>
                         <span>Reports</span>
                     </a>

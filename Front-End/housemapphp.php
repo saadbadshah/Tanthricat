@@ -9,7 +9,12 @@
 
       //set all the text box values to variables
       $HomeID = $_SESSION['HomeID'];
-      $Room = $_GET['name'];
+      
+
+      if($_GET['name'] != 'null' or $_GET['name']!=''){
+      	$Room = $_GET['name'];
+      }
+
 
        	$sql = "INSERT INTO RoomsTanthricat (KeyID,Room) VALUES (?, ?)";
 	    $stmt = mysqli_stmt_init($conn);

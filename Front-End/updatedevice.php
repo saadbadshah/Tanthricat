@@ -41,6 +41,26 @@ if (isset($_POST['Update'])){
                   else{
                     mysqli_stmt_bind_param($stmt, "sissss", $Nickname, $EnergyRating, $Category, $Room, $Date, $Time);
                     mysqli_stmt_execute($stmt);
+
+
+                  // Get cURL resource
+                  $curl = curl_init();
+                  // Set some options - we are passing in a useragent too here
+                  curl_setopt_array($curl, [
+                      CURLOPT_RETURNTRANSFER => 1,
+                      CURLOPT_URL => 'https://hook.integromat.com/murrun6gwghi2trops7voajbduo5suvf',
+                      CURLOPT_USERAGENT => 'Codular Sample cURL Request',
+                      CURLOPT_POST => 1,
+                      CURLOPT_POSTFIELDS => [
+                          name => $Nickname,
+                          state  => $State
+                      ]
+                  ]);
+                  // Send the request & save response to $resp
+                  $resp = curl_exec($curl);
+                  // Close request to clear up some resources
+                  curl_close($curl);
+
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices.php?error=deviceedited");
                     exit();
 
@@ -65,6 +85,24 @@ if (isset($_POST['Update'])){
                   else{
                     mysqli_stmt_bind_param($stmt, "siss", $Nickname, $EnergyRating, $Category, $Room);
                     mysqli_stmt_execute($stmt);
+
+                    // Get cURL resource
+                  $curl = curl_init();
+                  // Set some options - we are passing in a useragent too here
+                  curl_setopt_array($curl, [
+                      CURLOPT_RETURNTRANSFER => 1,
+                      CURLOPT_URL => 'https://hook.integromat.com/murrun6gwghi2trops7voajbduo5suvf',
+                      CURLOPT_USERAGENT => 'Codular Sample cURL Request',
+                      CURLOPT_POST => 1,
+                      CURLOPT_POSTFIELDS => [
+                          name => $Nickname,
+                          state  => $State
+                      ]
+                  ]);
+                  // Send the request & save response to $resp
+                  $resp = curl_exec($curl);
+                  // Close request to clear up some resources
+                  curl_close($curl);
                     header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/devices.php?error=deviceedited");
                     exit();
 

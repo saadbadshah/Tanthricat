@@ -129,13 +129,6 @@
                         <span>Reports</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="index.php">
-                        <i class="fa fa-gears"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
             </ul>
               <!-- sidebar menu end-->
           </div>

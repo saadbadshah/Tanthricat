@@ -436,15 +436,7 @@
         <!--main content end-->
 <?php
  // Connects to Our Database 
-$conn =  mysqli_connect('localhost', 'root', 'password', 'appliances');
-
-/* check connection */
-if ($conn){
-    echo 'connected';
-    
-}elseif(!$conn){
-    echo 'connection error' . mysqli_connect_error();
-}
+require 'db.php';
 // Retrieve the nickname, energy rating, and last on date of all currently active devices (State is 1/ON).
 $sql = "SELECT Duration, EnergyUsed, EnergyRating FROM DevicesTanthricat";
 

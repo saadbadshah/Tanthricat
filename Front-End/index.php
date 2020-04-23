@@ -119,28 +119,6 @@
                         <span>Reports</span>
                     </a>
                 </li>
-
-                <li>
-                    <a href="index.html">
-                        <i class="fa fa-gears"></i>
-                        <span>Settings</span>
-                    </a>
-                </li>
-
-		        <li class="sub-menu">
-		            <a href="javascript:;" >
-		                <i class="fa fa-laptop"></i>
-		                <span>Layouts</span>
-		            </a>
-	                <ul class="sub">
-	                    <li><a  href="boxed_page.html">Boxed Page</a></li>
-	                  	<li><a  href="horizontal_menu.html">Horizontal Menu</a></li>
-	                  	<li><a  href="header-color.html">Different Color Top bar</a></li>
-	                  	<li><a  href="mega_menu.html">Mega Menu</a></li>
-	                  	<li><a  href="language_switch_bar.html">Language Switch Bar</a></li>
-	                  	<li><a  href="email_template.html" target="_blank">Email Template</a></li>
-	              	</ul>
-		        </li>    
             </ul>
               <!-- sidebar menu end-->
           </div>
@@ -200,7 +178,7 @@
                               <i class="fa fa-refresh"></i>
                           </div>
                           <div class="value">
-                              <h1 class="count">
+                              <h1 class="count4">
                                   0
                               </h1>
                               <p>Today's Energy Generation</p>
@@ -213,7 +191,7 @@
                               <i class="fa fa-refresh"></i>
                           </div>
                           <div class="value">
-                              <h1 class="count2">
+                              <h1 class="count4">
                                   0
                               </h1>
                               <p>Weekly Energy Generation</p>
@@ -226,7 +204,7 @@
                               <i class="fa fa-lightbulb-o"></i>
                           </div>
                           <div class="value">
-                              <h1 class="count3">
+                              <h1 class="count4">
                                   0
                               </h1>
                               <p>Quick Recommendations</p>
@@ -243,7 +221,7 @@
                       <!--Active Devices Table start-->
                       <section class="card devices-card">
                           <header class="card-header">
-                              Active Devices
+                              Devices
                           </header>
                           <div class="scrollable">
                           	<!-- On the table tag below I added a 'devices-table' class to align all the text of the td's -->
@@ -319,7 +297,7 @@
                       <!--custom chart start-->
                     <!-- <section class="card"> -->
                       	<header class="card-header">
-                              Graph
+                              Energy Consumption Graph
                         </header>
                       <div class="custom-bar-chart home-bar-chart">
                           <ul class="y-axis">

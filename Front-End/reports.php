@@ -1,3 +1,14 @@
+ <?php 
+  
+  session_start();
+
+  if (!isset($_SESSION['HomeID'])){
+        header("Location: http://www2.macs.hw.ac.uk/~jw97/Tanthricat-master/Front-End/login.php");
+    } else {
+        
+    }
+
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -273,7 +284,14 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <img alt="" src="img/avatar1_small.jpg">
-                            <span class="username">Jhon Doue</span>
+                              <?php
+                                if (isset($_SESSION['HomeID'])){
+                                    echo '<span class="username">'.$_SESSION['First Name'].' '. $_SESSION['Last Name'].'</span>';
+                                } else {
+
+                                }
+
+                            ?>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout dropdown-menu-right">

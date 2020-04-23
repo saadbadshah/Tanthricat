@@ -204,7 +204,7 @@
 include 'db.php';
 $search=$_GET['q'];
 
-$data = "SELECT DeviceName,EnergyPH,Model,ManufaName from Dummy WHERE DeviceName like '%".$search."%'LIMIT 1";
+$data = "SELECT DeviceName,EnergyPH,Model,ManufaName from Dummyy WHERE DeviceName like '%".$search."%'LIMIT 1";
 $result = $conn->query($data);
 
  while($row = $result->fetch_assoc()) {

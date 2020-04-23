@@ -158,7 +158,7 @@
                                     <div class="form-group">
                                         <label for="device-name">Enter your device name:</label>
                                         <input type="text" class="form-control" id="search" name="q">
-                                        <button class="btn btn-primary" style="margin-top:100px;">Add Device</button>
+                                        <button class="btn btn-primary" style="margin-top:250px;">Add Device</button>
                                     </div>
                                 </form>
 

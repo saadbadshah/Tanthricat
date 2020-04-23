@@ -356,7 +356,6 @@
                             }
 
                             else{
-                              header("Location: http://www2.macs.hw.ac.uk/~jw97/CitiRentals/rent-car.php?error=EnterAllValues");
                               exit();
                             }
 
